@@ -1,0 +1,102 @@
+*** Settings ***
+Resource          _3element_dengluye.txt
+Resource          _3element_shouye.txt
+Resource          _3element.txt
+Resource          _3element_gerenzhongxing_ydl.txt
+Resource          _3element_common.txt
+Resource          _3element_xiugainichenye.txt
+Resource          _3element_xiugaixingbieye.txt
+Resource          _2page.txt
+Resource          _2page_login.robot
+
+*** Keywords ***
+搜索流程
+    [Arguments]    ${sharch_content}
+    打开首页
+    输入搜索关键字    ${sharch_content}
+    点击搜索图标
+    点击一条搜索结果
+
+登录流程
+    [Arguments]    ${mobile}=    ${password}=    ${_top1}=    ${_top2}=
+    输入手机号    ${mobile}
+    输入密码    ${password}
+    等待关键字成功    点击登录
+    校验提示语    ${_top1}    ${_top2}
+
+校验登录成功
+    ${jy_login}    get title
+    should be equal    ${jy_login}    零售易-会员中心
+
+修改昵称流程
+    [Arguments]    ${nickname}=    ${_top1}=    ${_top2}=
+    修改昵称    ${nickname}
+    点击保存
+    校验提示语    ${_top1}    ${_top2}
+    关闭浏览器
+
+校验修改成功的昵称
+    [Arguments]    ${nickname}
+    wait until keyword succeeds    10s    1s    获取昵称    ${nickname}
+
+修改性别流程1
+    等待关键字成功    选择女
+    点击保存
+
+修改性别流程2
+    等待关键字成功    选择男
+    点击保存
+
+校验修改成功的性别
+
+修改手机验证流程1
+    [Arguments]    ${info_title}    ${_top1}=    ${_top2}=
+    获取页面标题    ${info_title}
+    等待关键字成功    点击下一步
+    wait until keyword succeeds    10s    1s    校验提示语    ${_top1}    ${_top2}
+    关闭浏览器
+
+修改手机验证流程2
+    [Arguments]    ${info_title}    ${code_top}    ${oldtelverifycode}=    ${_top1}=    ${_top2}=
+    获取页面标题    ${info_title}
+    #点击获取验证码（旧手机号）
+    #wait until keyword succeeds    10s    1s    校验提示语    ${code_top}
+    输入原手机验证码    ${oldtelverifycode}
+    等待关键字成功    点击下一步
+    wait until keyword succeeds    10s    1s    校验提示语    ${_top1}    ${_top2}
+    关闭浏览器
+
+修改手机验证流程3
+    [Arguments]    ${code_top}    ${oldtelverifycode}=    ${info_title}=    ${_top1}=    ${_top2}=
+    #点击获取验证码（旧手机号）
+    #wait until keyword succeeds    10s    1s    校验提示语    ${code_top}
+    输入原手机验证码    ${oldtelverifycode}
+    等待关键字成功    点击下一步
+    #wait until keyword succeeds    10s    1s    获取页面标题    ${info_title}
+    等待关键字成功    点击保存
+    wait until keyword succeeds    10s    1s    校验提示语    ${_top1}    ${_top2}
+    关闭浏览器
+
+修改手机验证流程4
+    [Arguments]    ${info_title1}    ${code_top}    ${oldtelverifycode}=    ${info_title2}=    ${newcode_top}=    ${newmobile}=
+    ...    ${newverifycode}=    ${_top1}=    ${_top2}=
+    #获取页面标题    ${info_title1}
+    #点击获取验证码（旧手机号）
+    #wait until keyword succeeds    10s    1s    校验提示语    ${code_top}
+    输入原手机验证码    ${oldtelverifycode}
+    等待关键字成功    点击下一步
+    #wait until keyword succeeds    10s    1s    获取页面标题    ${info_title2}
+    #点击获取验证码（新手机号）
+    #wait until keyword succeeds    10s    1s    校验提示语    ${newcode_top}
+    wait until keyword succeeds    10s    1s    输入新手机号    ${newmobile}
+    输入新手机验证码    ${newverifycode}
+    等待关键字成功    点击保存
+    #wait until keyword succeeds    10s    1s    校验提示语    ${_top1}    ${_top2}
+    关闭浏览器
+
+登录流程1
+    [Arguments]    ${mobile}    ${password}
+    打开首页
+    点击我的
+    点击头像
+    登录    ${mobile}    ${password}

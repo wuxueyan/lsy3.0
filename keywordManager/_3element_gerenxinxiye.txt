@@ -1,0 +1,15 @@
+*** Keywords ***
+上传头像未验证
+    choose file    id=file-chooser    C:\\Users\\Administrator\\Desktop\\1.png
+
+点击昵称
+    click link    昵称
+
+点击出生日期
+    click link    出生日期
+
+点击性别
+    click link    性别
+
+点击修改手机
+    click link    手机号码

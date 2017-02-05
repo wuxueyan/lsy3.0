@@ -1,0 +1,12 @@
+*** Keywords ***
+搜索测试
+    [Arguments]    ${url}    ${search_content}
+    打开浏览器    ${url}
+    输入内容    ${search_content}
+    点击搜索按钮
+    校验跳转后标题    ${search_content}
+    关闭浏览器
+
+关键字测试
+    ${test}    set variable    123
+    run keyword if    ${test}==123    log    222

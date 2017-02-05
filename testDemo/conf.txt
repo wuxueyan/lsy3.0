@@ -1,0 +1,15 @@
+*** Settings ***
+Resource          0templateManager/登录模板.robot
+Resource          3keywordManager/公共关键字.robot
+
+*** Keywords ***
+成功登录
+    打开网址
+    等待关键字成功    点击我的
+    等待关键字成功    点击头像
+    登录测试模板    18270720030    123456    pass
+
+打开网址
+    #open browser    http://lsydd.d.easyder.com/?shopsid=16    ff
+    open browser    http://web.sv.easyder.com/?shopsid=20    ff
+    全屏操作

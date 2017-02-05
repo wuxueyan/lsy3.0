@@ -1,0 +1,3 @@
+*** Keywords ***
+获取页面标题
+    input text    id=birthday

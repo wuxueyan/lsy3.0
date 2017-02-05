@@ -1,0 +1,21 @@
+*** Keywords ***
+点击获取验证码（旧手机号）
+    click element    id=btn-verify-oldcode
+
+输入原手机验证码
+    [Arguments]    ${oldtelverifycode}=
+    input text    name=oldtelverifycode    ${oldtelverifycode}
+
+点击下一步
+    click element    id=btn-next
+
+输入新手机号
+    [Arguments]    ${newmobile}
+    input text    name=newtel    ${newmobile}
+
+点击获取验证码（新手机号）
+    click element    id=btn-verify-newcode
+
+输入新手机验证码
+    [Arguments]    ${newverifycode}
+    input text    css=[name=newverifycode]    ${newverifycode}

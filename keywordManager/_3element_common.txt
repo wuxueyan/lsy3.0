@@ -1,0 +1,31 @@
+*** Keywords ***
+校验提示语
+    [Arguments]    ${_top1}=    ${_top2}=
+    page should contain    ${_top1}    ${_top2}
+
+关闭浏览器
+    close all browsers
+
+休眠
+    sleep    3
+
+点击左上角的<
+    click element    css=.return_btn
+
+点击保存
+    click element    id=btn-submit
+
+获取页面标题
+    [Arguments]    ${info_title}
+    ${get_page_tit}    get text    css=.page_tit h3
+    should be equal    ${get_page_tit}    ${info_title}
+
+等待关键字成功
+    [Arguments]    ${keyword_success}
+    wait until keyword succeeds    10s    1s    ${keyword_success}
+
+测试失败时调用
+    run keyword if test failed    关闭浏览器
+
+全屏操作
+    maximize browser window

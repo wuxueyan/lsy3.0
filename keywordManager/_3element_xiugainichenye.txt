@@ -1,0 +1,9 @@
+*** Keywords ***
+修改昵称
+    [Arguments]    ${nickname}
+    input text    name=nickname    ${nickname}
+
+获取昵称
+    [Arguments]    ${nickname}
+    ${nickname_success}    get text    css=div.page_tit div.ucset_list p.linklis a:nth-child(2) tt
+    should be equal    ${nickname_success}    ${nickname}

@@ -1,3 +1,0 @@
-*** Keywords ***
-点击一条搜索结果
-    click element    css=#list li a

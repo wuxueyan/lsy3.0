@@ -1,8 +1,0 @@
-*** Settings ***
-Resource          _1testflow_denglu.txt
-
-*** Keywords ***
-登录测试模板
-    [Arguments]    ${mobile}    ${password}    ${expect}
-    登录流程1    ${mobile}    ${password}
-    校验登录结果    ${expect}

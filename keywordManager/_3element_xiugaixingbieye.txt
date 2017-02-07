@@ -1,6 +1,0 @@
-*** Keywords ***
-选择女
-    click element    css=#form:nth-child(0)
-
-选择男
-    click element    css=#form:nth-child(1)
